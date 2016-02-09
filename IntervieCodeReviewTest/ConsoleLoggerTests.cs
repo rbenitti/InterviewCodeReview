@@ -1,4 +1,5 @@
 ﻿using InterviewCodeReview;
+using InterviewCodeReview.Loggers;
 using InterviewCodeReview.Messages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

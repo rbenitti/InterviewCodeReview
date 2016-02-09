@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace InterviewCodeReview
+namespace InterviewCodeReview.Loggers
 {
     /// <summary>
     /// TextFileLogger writes messages to files. The files are determined dynamically by a file factory.

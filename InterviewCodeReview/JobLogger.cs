@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using InterviewCodeReview.Interfaces;
 using InterviewCodeReview.Exceptions;
-using InterviewCodeReview.Messages;
 
 namespace InterviewCodeReview
 {
@@ -167,51 +166,6 @@ namespace InterviewCodeReview
                 }
             }
 
-        }
-
-        /// <summary>
-        /// Configuration example 
-        /// </summary>
-        static public void Configure()
-        {
-            string connectionString;
-            string fullFileName;
-
-            connectionString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-
-            fullFileName = System.Configuration.ConfigurationManager.AppSettings["LogFileDirectory"]
-                + "LogFile"
-                + DateTime.Now.ToShortDateString()
-                + ".txt";
-
-            IDatabase database = new SQLDatabase(connectionString);
-
-            IFileFactory fileFactory = new AppendFileFactory(fullFileName);
-
-            Dictionary<Type, int> messageCodes = new Dictionary<Type, int> {
-                { typeof(GeneralMessage), 1},
-                { typeof(WarningMessage), 2},
-                { typeof(ErrorMessage), 3}
-            };
-
-            Dictionary<Type, ConsoleColor> messageColors = new Dictionary<Type, ConsoleColor>
-            {
-                {typeof(GeneralMessage), ConsoleColor.Blue},
-                {typeof(WarningMessage), ConsoleColor.Yellow},
-                {typeof(ErrorMessage), ConsoleColor.Red}
-            };
-
-            _instance
-               .Reset()
-               .SetLoggers(new List<ILogger>
-                {
-                    new ConsoleLogger(messageColors),
-                    new TextFileLogger(fileFactory),
-                    new SQLDBLogger(database, messageCodes)
-                })
-               .AcceptMessages<GeneralMessage>()
-               .AcceptMessages<WarningMessage>()
-               .AcceptMessages<ErrorMessage>();
         }
     }
 }

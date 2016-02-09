@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace InterviewCodeReview
+namespace InterviewCodeReview.Loggers
 {
     public class ConsoleLogger : ILogger
     {

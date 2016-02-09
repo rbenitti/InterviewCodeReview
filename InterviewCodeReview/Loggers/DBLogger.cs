@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace InterviewCodeReview
+namespace InterviewCodeReview.Loggers
 {
     /// <summary>
     /// SQLDBLogger saves messages into a table Log(message, messageCode) in a SQL database. 

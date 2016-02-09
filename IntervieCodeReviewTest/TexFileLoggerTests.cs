@@ -6,6 +6,7 @@ using InterviewCodeReview.Interfaces;
 using System.IO;
 using IntervieCodeReviewTest.Stubs;
 using InterviewCodeReview.Messages;
+using InterviewCodeReview.Loggers;
 
 namespace IntervieCodeReviewTest
 {
