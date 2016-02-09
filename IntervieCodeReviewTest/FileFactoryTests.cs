@@ -4,6 +4,7 @@ using System.IO;
 using InterviewCodeReview;
 using InterviewCodeReview.Interfaces;
 using System.Collections.Generic;
+using InterviewCodeReview.Exceptions;
 
 namespace IntervieCodeReviewTest
 {
@@ -37,6 +38,28 @@ namespace IntervieCodeReviewTest
             {
                 File.Delete(fileName);
             }
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(UndefinedFileNameException), AppendFileFactory.ERR_FILENAME_NOT_DEFINED)]
+        public void AppendFileFictoryCannotBeCreatedWithEmptyFileName()
+        {
+            IFileFactory fileFactory = new AppendFileFactory("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UndefinedFileNameException), AppendFileFactory.ERR_FILENAME_NOT_DEFINED)]
+        public void AppendFileFictoryCannotBeCreatedWithAllSpacesFileName()
+        {
+            IFileFactory fileFactory = new AppendFileFactory("    ");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UndefinedFileNameException), AppendFileFactory.ERR_FILENAME_NOT_DEFINED)]
+        public void AppendFileFictoryCannotBeCreatedWithNullFileName()
+        {
+            IFileFactory fileFactory = new AppendFileFactory(null);
         }
 
         [TestMethod]

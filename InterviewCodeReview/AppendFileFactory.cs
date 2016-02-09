@@ -11,6 +11,8 @@ namespace InterviewCodeReview
     /// </summary>
     public class AppendFileFactory : IFileFactory
     {
+        public const string ERR_FILENAME_NOT_DEFINED = "File name not defined.";
+
         private string _fileName;
 
         /// <summary>
@@ -19,12 +21,12 @@ namespace InterviewCodeReview
         /// <param name="fileName"></param>
         public AppendFileFactory(string fileName)
         {
-            if (fileName == null)
+            if (fileName == null || fileName.Trim() == String.Empty)
             {
-                throw new UndefinedFileNameException("File name not defined.");
+                throw new UndefinedFileNameException(ERR_FILENAME_NOT_DEFINED);
             }
 
-            _fileName = fileName;
+            _fileName = fileName.Trim();
         }
 
         public string FileName
